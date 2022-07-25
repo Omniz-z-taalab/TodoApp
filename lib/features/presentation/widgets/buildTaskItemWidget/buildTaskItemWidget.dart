@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:untitled/core/util/Cubit/Bloc.dart';
+
+Color getColorFrom(String colorStr) {
+
+  String valueString =
+  colorStr.split('(0x')[1].split(')')[0];
+  int value = int.parse(valueString, radix: 16);
+  return Color(value);
+}
+int? current  = 0;
 
 Widget buildTaskItem(Map model, context) => Dismissible(
       key: Key(model['id'].toString()),
@@ -12,21 +22,34 @@ Widget buildTaskItem(Map model, context) => Dismissible(
           children: [
             Padding(
               padding: const EdgeInsets.all(18.0),
-              child: IconButton(
-                icon: Icon(Icons.favorite,color: Colors.red,),
-                onPressed: () {},
-              ),
+              child: InkWell(
+                onTap: (){
+                  print(model['id']);
+                  TodoBloc.get(context).ChangeColorName();
+                  TodoBloc.get(context)
+                      .upDateTodoDatabase(status: 'completed', id: model['id']);
+                  print('ay7agaaaaaaaaaaaaa');
+                  print(current);
+                },
+                child: Container(
+                  width: 25,
+                  height: 25,
+                  decoration: BoxDecoration(
+                     color: getColorFrom(model['color']),
+                    borderRadius: BorderRadius.circular(7),
+                    border: Border.all(color: getColorFrom(model['color']),width: 3.0),
+                  ),
+                ),
+              )
             ),
-            SizedBox(
-              width: 20,
-            ),
+
             Container(
               child: Text(
                 '${model['title']}',
                 style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                    TextStyle(fontWeight: FontWeight.normal, color:  Colors.black,fontSize: 20)),
               ),
-            ),
+
             SizedBox(
               width: 100,
             ),
@@ -34,11 +57,11 @@ Widget buildTaskItem(Map model, context) => Dismissible(
                 onPressed: () {
                   print(model['id']);
                   TodoBloc.get(context)
-                      .upDateTodoDatabase(status: 'completed', id: model['id']);
+                      .upDateTodoDatabase(status: 'favorite', id: model['id']);
                 },
                 icon: Icon(
-                  Icons.done_all,
-                  color: Colors.green,
+                  Icons.favorite_border,
+                  color:  getColorFrom(model['color'])
                 )),
 
           ],

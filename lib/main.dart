@@ -3,10 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled/core/util/Cubit/Bloc.dart';
 import 'package:untitled/core/util/Cubit/TodoStates.dart';
 import 'package:untitled/core/util/Cubit/blocObserver/BlocObserver.dart';
+import 'package:untitled/core/util/const/notificationServices.dart';
 
 import 'features/presentation/pages/BoardScreen/MyBoardPage.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  NotifyHelper().initializeNotification();
   Bloc.observer = MyBlocObserver();
   runApp(MyApp());
 }

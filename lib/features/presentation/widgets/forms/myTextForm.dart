@@ -27,10 +27,15 @@ class MyTextForm extends StatelessWidget {
       validator: validator,
       onTap: onTap,
       decoration: InputDecoration(
+        errorBorder: OutlineInputBorder(
+            borderSide:
+            BorderSide(color: Colors.red)),
+        fillColor: Colors.grey[200],
+        filled: true,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(radius),
+          borderRadius: BorderRadius.circular(20.0),
+          borderSide: BorderSide.none,
         ),
-        suffixIcon: suffix != null ? IconButton(onPressed: suffixPressed,icon: Icon(suffix)) : null,
       ),
     );
   }

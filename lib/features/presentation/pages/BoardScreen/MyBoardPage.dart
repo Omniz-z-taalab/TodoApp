@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled/features/presentation/pages/Schedule/Schedule.dart';
 import 'package:untitled/features/presentation/widgets/AllTasksWidget/AllTasks.dart';
 import 'package:untitled/features/presentation/widgets/CompletedTasksWidget/CompletedTasks.dart';
 import 'package:untitled/features/presentation/widgets/FavoritTasksWidget/FavoritTasks.dart';
@@ -30,7 +31,7 @@ class _MyBoardPageState extends State<MyBoardPage> {
             actions: [
               IconButton(
                   onPressed: () {
-                    // Navigator.push(context, MaterialPageRoute(builder: (_) => ToDoSchedule()));
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => ScheduleScreen()));
                   },
                   icon: Icon(
                     Icons.schedule,
@@ -49,19 +50,19 @@ class _MyBoardPageState extends State<MyBoardPage> {
                 ),
                 Tab(
                   child: Text(
-                    'complete',
+                    'Complete',
                     style: TextStyle(color: Colors.black),
                   ),
                 ),
                 Tab(
                   child: Text(
-                    'unomplete',
+                    'UnComplete',
                     style: TextStyle(color: Colors.black),
                   ),
                 ),
                 Tab(
                   child: Text(
-                    'favorite',
+                    'Favorite',
                     style: TextStyle(color: Colors.black),
                   ),
                 ),

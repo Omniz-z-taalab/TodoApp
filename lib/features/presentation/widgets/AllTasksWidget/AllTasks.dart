@@ -36,7 +36,9 @@ class AllTasks extends StatelessWidget {
                   color: Colors.grey[350],
                 ),
                 itemCount: cubit.length,
+
               ),
+
             ),
               SizedBox(
                 height: 30,

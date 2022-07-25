@@ -20,7 +20,7 @@ class _UnCombletedTasksState extends State<UnCombletedTasks> {
 
       },
       builder: (context, state) {
-        var cubit = TodoBloc.get(context).allTasks;
+        var cubit = TodoBloc.get(context).uncompletedTasks;
         return Column(
             children:[ Expanded(
               child: ListView.separated(
