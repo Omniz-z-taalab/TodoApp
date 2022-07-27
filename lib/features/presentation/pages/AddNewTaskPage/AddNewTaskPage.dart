@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:untitled/core/util/Cubit/Bloc.dart';
 import 'package:untitled/core/util/Cubit/TodoStates.dart';
 import 'package:untitled/core/util/const/DescriptionText.dart';
+import 'package:untitled/core/util/const/notificationServices.dart';
 import 'package:untitled/features/presentation/widgets/bottons/MyBotton.dart';
 import 'package:untitled/features/presentation/widgets/forms/myTextForm.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -46,7 +47,9 @@ class _AddTaskState extends State<AddTask> {
                 Icons.arrow_back_ios,
                 color: Colors.black,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
             backgroundColor: Colors.white,
             actions: [
@@ -102,6 +105,7 @@ class _AddTaskState extends State<AddTask> {
                           firstDate: DateTime.now(),
                           lastDate: DateTime.parse('2025-08-31'),
                         ).then((value) {
+
                           cubit.dateController.text =
                               DateFormat.yMMMd().format(value!);
                           debugPrint(DateFormat.yMMMd().format(value));
@@ -157,6 +161,7 @@ class _AddTaskState extends State<AddTask> {
                                 cubit.startTimeController.text =
                                     value!.format(context);
                                 debugPrint(value.format(context));
+
                               });
                             },
                           ),

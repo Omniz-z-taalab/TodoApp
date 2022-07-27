@@ -16,32 +16,24 @@ Widget buildTaskUncompletedItem(Map model, context) => Padding(
     children: [
       Padding(
           padding: const EdgeInsets.all(18.0),
-          child: Container(
-            width: 30,
-            height: 30,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(7),
-
-              border: Border.all(color: getColorFrom(model['color']),width: 3.0),
-            ),
-          )),
-      SizedBox(
-        width: 20,
-      ),
+         child:
       Container(
         child: Text(
           '${model['title']}',
-          style:
-          TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-        ),
-      ),
 
+          style:
+          TextStyle(fontWeight: FontWeight.normal,
+              color: Colors.black,
+              fontSize: 20),
+        ),
+      )),
+        SizedBox(width: 160,),
       Padding(
         padding: const EdgeInsets.only(left: 18.0),
         child: IconButton(onPressed: (){
           print(model['id']);
           TodoBloc.get(context).upDateTodoDatabase(status: 'new', id: model['id']);
-        }, icon: Icon(Icons.clear,color: Colors.green,)),
+        }, icon: Icon(Icons.clear,color: getColorFrom(model['color']),)),
       ),
 
 

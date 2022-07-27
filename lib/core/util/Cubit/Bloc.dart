@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:path/path.dart' as p;
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -30,13 +31,11 @@ class TodoBloc extends Cubit<TodoStates> {
     debugPrint('CreatedDatabaseInitialized');
   }
 
-
   late Database database;
-
-  ChangeColorName() {
-    current = 1;
-    print('lalalalalalalalal');
-    emit(ChangeColorState());
+var isChecked = false ;
+  changeCheckBox(bool? value,int id) {
+    isChecked = value!;
+    emit(CheckBoxState());
   }
 
   void initDatabase() async {
@@ -89,6 +88,7 @@ class TodoBloc extends Cubit<TodoStates> {
     required String endTime,
     required String remind,
     required String color,
+
   }) async {
     await database.transaction((txn) async {
       txn
@@ -96,6 +96,8 @@ class TodoBloc extends Cubit<TodoStates> {
               'INSERT INTO tasks (title,date,startTime,endTime,remind,status,color) VALUES ("$title","$date","$startTime","$endTime","$remind","new","$color")')
           .then((value) {
         debugPrint('$value Inserting Successfully');
+
+        // NotifyHelper().scheduledNotification(int.parse(startTime.toString()),int.parse(endTime.toString()));
         NotifyHelper().displayNotification(title: title, body: remind);
         titleController.clear();
         dateController.clear();
@@ -126,12 +128,10 @@ class TodoBloc extends Cubit<TodoStates> {
         } else if (element['status'] == 'completed') {
           completedTasks.add(element);
           allTasks.add(element);
-        }
-        else if (element['status'] == 'favorite') {
+        } else if (element['status'] == 'favorite') {
           favoritesTasks.add(element);
           allTasks.add(element);
           uncompletedTasks.add(element);
-
         }
         debugPrint(element.toString());
       });
@@ -139,7 +139,7 @@ class TodoBloc extends Cubit<TodoStates> {
     });
   }
 
-  void upDateTodoDatabase({
+   upDateTodoDatabase({
     required String status,
     required int id,
   }) async {

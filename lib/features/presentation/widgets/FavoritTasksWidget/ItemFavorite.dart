@@ -11,7 +11,7 @@ Color getColorFrom(String colorStr) {
   return Color(value);
 }
 int? current  = 0;
-
+bool value = false;
 Widget favoritesTasks(Map model, context) => Dismissible(
   key: Key(model['id'].toString()),
   onDismissed: ( directions) {
@@ -29,14 +29,14 @@ Widget favoritesTasks(Map model, context) => Dismissible(
                 TodoBloc.get(context)
                     .upDateTodoDatabase(status: 'completed', id: model['id']);
                 print('ay7agaaaaaaaaaaaaa');
-                TodoBloc.get(context).ChangeColorName();
+                TodoBloc.get(context).changeCheckBox(value,model['id']);
                 print(current);
               },
               child: Container(
                 width: 25,
                 height: 25,
                 decoration: BoxDecoration(
-                   color: TodoBloc.get(context).ChangeColorName() == 1 ? Colors.grey : Colors.green,
+                    color: TodoBloc.get(context).isChecked == false ? Colors.grey : Colors.green,
                   borderRadius: BorderRadius.circular(7),
                   border: Border.all(color: getColorFrom(model['color']),width: 3.0),
                 ),
