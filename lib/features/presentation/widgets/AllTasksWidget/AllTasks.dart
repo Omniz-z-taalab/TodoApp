@@ -48,7 +48,7 @@ class _AllTasksState extends State<AllTasks> {
                 itemBuilder: (context, index) => buildTaskItem(cubit[index], context),
                 separatorBuilder: (context, index) => Divider(
                   height: 1.0,
-                  color: Colors.grey[350],
+                  color: Colors.white,
                 ),
                 itemCount: cubit.length,
 

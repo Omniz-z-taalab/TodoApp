@@ -10,8 +10,15 @@ Color getColorFrom(String colorStr) {
   int value = int.parse(valueString, radix: 16);
   return Color(value);
 }
-Widget buildTaskUncompletedItem(Map model, context) => Padding(
+Widget buildTaskCompletedItem(Map model, context) => Padding(
   padding: const EdgeInsets.all(20.0),
+child: Container(
+width: double.infinity,
+height: 70,
+decoration: BoxDecoration(
+borderRadius: BorderRadius.circular(15),
+color: Colors.grey[200],
+),
   child: Row(
     children: [
       Padding(
@@ -38,5 +45,5 @@ Widget buildTaskUncompletedItem(Map model, context) => Padding(
 
 
     ],
-  ),
+  ),),
 );

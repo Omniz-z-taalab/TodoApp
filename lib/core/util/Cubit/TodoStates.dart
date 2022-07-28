@@ -10,5 +10,6 @@ class TodoChangeColorStates extends TodoStates{}
 class TodoGetDatabaseStates extends TodoStates{}
 class AppGetDatabaseLoadingState extends TodoStates{}
 class AppUpdateDatabaseState extends TodoStates{}
+class AppUpdateFavoriteDatabaseState extends TodoStates{}
 class DeleteDatabaseState extends TodoStates{}
 class CheckBoxState extends TodoStates{}

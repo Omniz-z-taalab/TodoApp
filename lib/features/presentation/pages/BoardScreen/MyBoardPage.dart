@@ -24,19 +24,25 @@ class _MyBoardPageState extends State<MyBoardPage> {
           appBar: AppBar(
 
             backgroundColor: Colors.white,
-            title: Text(
-              'Board',
-              style: TextStyle(color: Colors.black),
+            title: Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Text(
+                'Board',
+                style: TextStyle(color: Colors.black,fontSize: 25),
+              ),
             ),
             actions: [
-              IconButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => ScheduleScreen()));
-                  },
-                  icon: Icon(
-                    Icons.schedule,
-                    color: Colors.green,
-                  ))
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => ScheduleScreen()));
+                    },
+                    icon: Icon(
+                      Icons.calendar_today_rounded,
+                      color: Colors.green,
+                    )),
+              )
             ],
             bottom: TabBar(
               isScrollable: true,
@@ -50,7 +56,7 @@ class _MyBoardPageState extends State<MyBoardPage> {
                 ),
                 Tab(
                   child: Text(
-                    'Complete',
+                    'Completed',
                     style: TextStyle(color: Colors.black),
                   ),
                 ),

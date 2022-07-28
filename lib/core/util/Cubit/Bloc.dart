@@ -13,6 +13,12 @@ class TodoBloc extends Cubit<TodoStates> {
   TodoBloc() : super(InitialStates());
 
   static TodoBloc get(context) => BlocProvider.of<TodoBloc>(context);
+  DateTime selectedDate = DateTime.now();
+void ScheduleDate(){
+  String dateOfDay = DateFormat('EEEE').format(selectedDate);
+  print(dateOfDay.toString());
+
+}
   MaterialColor TaskColor = Colors.green;
   List<Map> allTasks = [];
   List<Map> completedTasks = [];
@@ -57,7 +63,15 @@ var isChecked = false ;
         debugPrint('Database Created');
         database
             .execute(
-                'CREATE TABLE tasks (id INTEGER PRIMARY KEY, title TEXT, date TEXT, startTime TEXT, endTime TEXT, remind TEXT,status TEXT,color TEXT)')
+                'CREATE TABLE tasks (id INTEGER PRIMARY KEY,'
+                    ' title TEXT'
+                    ', date TEXT'
+                    ', startTime TEXT'
+                    ', endTime TEXT,'
+                    ' remind TEXT,'
+                    'status TEXT,'
+                    'color TEXT,'
+                    'favorite TEXT)')
             .then((value) {
           debugPrint('Table Created');
         }).catchError((error) {
@@ -93,7 +107,7 @@ var isChecked = false ;
     await database.transaction((txn) async {
       txn
           .rawInsert(
-              'INSERT INTO tasks (title,date,startTime,endTime,remind,status,color) VALUES ("$title","$date","$startTime","$endTime","$remind","new","$color")')
+              'INSERT INTO tasks (title,date,startTime,endTime,remind,status,color,favorite) VALUES ("$title","$date","$startTime","$endTime","$remind","new","$color","new")')
           .then((value) {
         debugPrint('$value Inserting Successfully');
 
@@ -119,23 +133,32 @@ var isChecked = false ;
     allTasks = [];
     completedTasks = [];
     uncompletedTasks = [];
+    favoritesTasks = [];
     emit(AppGetDatabaseLoadingState());
     database.rawQuery('SELECT * FROM tasks').then((value) {
+      allTasks = value;
       value.forEach((element) {
         if (element['status'] == 'new') {
-          allTasks.add(element);
           uncompletedTasks.add(element);
         } else if (element['status'] == 'completed') {
           completedTasks.add(element);
-          allTasks.add(element);
-        } else if (element['status'] == 'favorite') {
+        } if(element['favorite'] == 'favorite'){
           favoritesTasks.add(element);
-          allTasks.add(element);
-          uncompletedTasks.add(element);
         }
         debugPrint(element.toString());
       });
       emit(TodoGetDatabaseStates());
+    });
+  }
+
+  upDateFavoriteTasks({
+    required String favorite,
+    required int id,
+  }) async {
+    await database.rawUpdate('UPDATE tasks SET favorite = ? WHERE id = ?',
+        ['$favorite', '$id']).then((value) {
+      getDataFromDatabase(database);
+      emit(AppUpdateFavoriteDatabaseState());
     });
   }
 

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled/core/util/Cubit/Bloc.dart';
 import 'package:untitled/core/util/Cubit/TodoStates.dart';
-import 'package:untitled/features/presentation/widgets/FavoritTasksWidget/ItemFavorite.dart';
+import 'package:untitled/features/presentation/widgets/buildTaskItemWidget/ItemFavorite.dart';
 
 class FavoritTasks extends StatefulWidget {
   const FavoritTasks({Key? key}) : super(key: key);
@@ -28,7 +28,7 @@ class _FavoritTasksState extends State<FavoritTasks> {
                     favoritesTasks(cubit[index], context),
                 separatorBuilder: (context, index) => Divider(
                   height: 1.0,
-                  color: Colors.grey[350],
+                  color: Colors.white,
                 ),
                 itemCount: cubit.length,
 
