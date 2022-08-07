@@ -42,18 +42,15 @@ class _AddTaskState extends State<AddTask> {
           appBar: AppBar(
             title: const Text(
               'Add Task',
-              style: TextStyle(color: Colors.black),
             ),
             leading: IconButton(
               icon: Icon(
                 Icons.arrow_back_ios,
-                color: Colors.black,
               ),
               onPressed: () {
                 Navigator.pop(context);
               },
             ),
-            backgroundColor: Colors.white,
 
           ),
           body: Form(
@@ -70,8 +67,8 @@ class _AddTaskState extends State<AddTask> {
                             descrip: 'Title',
                             fontwidth: FontWeight.bold,
                             fontSize: 15,
-                            textColor: Colors.black),
-                      ),
+                          textColor:  Theme.of(context).canvasColor,
+                      ),),
                       MyTextForm(
                         controller: cubit.titleController,
                         type: TextInputType.text,
@@ -84,12 +81,12 @@ class _AddTaskState extends State<AddTask> {
                         radius: 10.0,
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 20.0),
-                        child: const DescriptionText(
+                        padding:  EdgeInsets.only(top: 20.0),
+                        child:  DescriptionText(
                             descrip: 'Date',
                             fontwidth: FontWeight.bold,
                             fontSize: 15,
-                            textColor: Colors.black),
+                            textColor: Theme.of(context).canvasColor),
                       ),
                       MyTextForm(
                         controller: cubit.dateController,
@@ -114,14 +111,14 @@ class _AddTaskState extends State<AddTask> {
                         height: 10.0,
                       ),
                       Row(
-                        children: const [
+                        children:  [
                           Padding(
                             padding: EdgeInsets.only(top: 20.0),
                             child: DescriptionText(
                                 descrip: 'Start Time',
                                 fontwidth: FontWeight.bold,
                                 fontSize: 15,
-                                textColor: Colors.black),
+                                textColor: Theme.of(context).canvasColor),
                           ),
                           SizedBox(
                             width: 100,
@@ -132,7 +129,7 @@ class _AddTaskState extends State<AddTask> {
                                 descrip: 'End Time',
                                 fontwidth: FontWeight.bold,
                                 fontSize: 15,
-                                textColor: Colors.black),
+                                textColor:  Theme.of(context).canvasColor),
                           ),
                         ],
                       ),
@@ -198,9 +195,10 @@ class _AddTaskState extends State<AddTask> {
                             descrip: 'Remind',
                             fontwidth: FontWeight.bold,
                             fontSize: 15,
-                            textColor: Colors.black),
+                            textColor:  Theme.of(context).canvasColor),
                       ),
                       DropdownButtonFormField<String>(
+                        dropdownColor:Theme.of(context).backgroundColor ,
                         value: minsController,
                         validator: (val) {
                           if (val == null) {
@@ -217,7 +215,9 @@ class _AddTaskState extends State<AddTask> {
                         ]
                             .map((e) => DropdownMenuItem(
                                   value: e,
-                                  child: Text(e.toString()),
+                                  child: Text(e.toString(),style: TextStyle(
+                                    color:  Theme.of(context).canvasColor
+                                  ),),
                                 ))
                             .toList(),
                         onChanged: (val) {
@@ -226,9 +226,10 @@ class _AddTaskState extends State<AddTask> {
                           });
                         },
                         decoration: InputDecoration(
+
                           errorBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.red)),
-                          fillColor: Colors.grey[200],
+                          fillColor:  Theme.of(context).backgroundColor,
                           filled: true,
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20.0),
@@ -246,6 +247,7 @@ class _AddTaskState extends State<AddTask> {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16.0,
+                            color:  Theme.of(context).canvasColor
                           ),
                         ),
                       ),
@@ -253,11 +255,11 @@ class _AddTaskState extends State<AddTask> {
                         height: 10,
                       ),
                       Container(
-                        height: 200.0,
+                        height: 160.0,
                         width: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.grey[200],
+                          color:  Theme.of(context).backgroundColor,
                         ),
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -276,7 +278,7 @@ class _AddTaskState extends State<AddTask> {
                                         width: 2,
                                         color: index == 0
                                             ? HexColor('FF748C')
-                                            : HexColor('eeeded')),
+                                            :  Theme.of(context).backgroundColor),
                                   ),
                                 ),
                                 child: Row(
@@ -317,7 +319,7 @@ class _AddTaskState extends State<AddTask> {
                                         width: 2,
                                         color: index == 1
                                             ? HexColor('4FD77C')
-                                            : HexColor('eeeded')),
+                                            :  Theme.of(context).backgroundColor),
                                   ),
                                 ),
                                 child: Row(
@@ -355,7 +357,7 @@ class _AddTaskState extends State<AddTask> {
                                         width: 2,
                                         color: index == 2
                                             ? HexColor('C04FD7')
-                                            : HexColor('eeeded')),
+                                            :  Theme.of(context).backgroundColor),
                                   ),
                                 ),
                                 child: Row(

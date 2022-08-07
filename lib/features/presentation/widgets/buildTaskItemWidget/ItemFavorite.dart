@@ -18,7 +18,7 @@ Widget favoritesTasks(Map model, context) => Padding(
         height: 70,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: Colors.grey[200],
+          color: Theme.of(context).backgroundColor,
         ),
         child: Row(
           children: [
@@ -28,12 +28,9 @@ Widget favoritesTasks(Map model, context) => Padding(
                 child: Padding(
                   padding: const EdgeInsets.only(left: 18.0),
                   child: Text('${model['title']}',
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black,
-                          fontSize: 20)),
+                      style: Theme.of(context).textTheme.title
                 ),
-              ),
+              ),),
             ),
             SizedBox(
               width: 150,

@@ -8,8 +8,10 @@ class MyTextForm extends StatelessWidget {
   final double radius;
   final IconData? suffix;
   final Function()? suffixPressed;
+  // final Color color;
   const MyTextForm({
     Key? key,
+    // required this.color,
     required this.controller,
     this.type,
     required this.validator,
@@ -30,7 +32,7 @@ class MyTextForm extends StatelessWidget {
         errorBorder: OutlineInputBorder(
             borderSide:
             BorderSide(color: Colors.red)),
-        fillColor: Colors.grey[200],
+        fillColor:  Theme.of(context).backgroundColor,
         filled: true,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.0),

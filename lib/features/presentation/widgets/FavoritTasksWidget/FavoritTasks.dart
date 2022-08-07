@@ -5,14 +5,14 @@ import 'package:untitled/core/util/Cubit/Bloc.dart';
 import 'package:untitled/core/util/Cubit/TodoStates.dart';
 import 'package:untitled/features/presentation/widgets/buildTaskItemWidget/ItemFavorite.dart';
 
-class FavoritTasks extends StatefulWidget {
-  const FavoritTasks({Key? key}) : super(key: key);
+class FavoritesWidget extends StatefulWidget {
+  const FavoritesWidget({Key? key}) : super(key: key);
 
   @override
-  State<FavoritTasks> createState() => _FavoritTasksState();
+  State<FavoritesWidget> createState() => _FavoritesWidgetState();
 }
 
-class _FavoritTasksState extends State<FavoritTasks> {
+class _FavoritesWidgetState extends State<FavoritesWidget> {
   @override
   Widget build(BuildContext context) {
     return  BlocConsumer<TodoBloc, TodoStates>(

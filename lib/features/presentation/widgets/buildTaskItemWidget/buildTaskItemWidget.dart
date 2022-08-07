@@ -40,7 +40,7 @@ Widget buildTaskItem(Map model, context) => Dismissible(
           height: 70,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            color: Colors.grey[200],
+            color: Theme.of(context).backgroundColor
           ),
           child: Row(
             children: [
@@ -70,10 +70,7 @@ Widget buildTaskItem(Map model, context) => Dismissible(
                   )),
               Container(
                 child: Text('${model['title']}',
-                    style: TextStyle(
-                        fontWeight: FontWeight.normal,
-                        color: Colors.black,
-                        fontSize: 20)),
+                    style: Theme.of(context).textTheme.title),
               ),
               SizedBox(
                 width: 120,
