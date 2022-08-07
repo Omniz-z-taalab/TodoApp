@@ -5,14 +5,14 @@ import 'package:untitled/core/util/Cubit/Bloc.dart';
 import 'package:untitled/core/util/Cubit/TodoStates.dart';
 import 'package:untitled/features/presentation/widgets/buildTaskItemWidget/buildTaskItemWidget.dart';
 
-class UnCombletedTasks extends StatefulWidget {
-  const UnCombletedTasks({Key? key}) : super(key: key);
+class UnCompletedWidget extends StatefulWidget {
+  const UnCompletedWidget({Key? key}) : super(key: key);
 
   @override
-  State<UnCombletedTasks> createState() => _UnCombletedTasksState();
+  State<UnCompletedWidget> createState() => _UnCompletedWidgetState();
 }
 
-class _UnCombletedTasksState extends State<UnCombletedTasks> {
+class _UnCompletedWidgetState extends State<UnCompletedWidget> {
   @override
   Widget build(BuildContext context) {
     return        BlocConsumer<TodoBloc, TodoStates>(

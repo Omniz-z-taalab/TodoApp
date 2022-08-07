@@ -29,11 +29,9 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
       appBar: AppBar(
         title: Text(
             'Schedule',
-            style: TextStyle(color: Colors.black),
 
         ),
 
-        backgroundColor: Colors.white,
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -62,10 +60,8 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
               Expanded(
                 child: Text(
                   '${dateOfDay}',
-                  style: const TextStyle(
-                    fontSize: 16.0,
-                    color: Colors.black,
-                  ),
+                    style: Theme.of(context).textTheme.title
+
                 ),
               ),
             ]),

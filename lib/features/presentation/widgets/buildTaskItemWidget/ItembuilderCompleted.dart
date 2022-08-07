@@ -17,7 +17,7 @@ width: double.infinity,
 height: 70,
 decoration: BoxDecoration(
 borderRadius: BorderRadius.circular(15),
-color: Colors.grey[200],
+color: Theme.of(context).backgroundColor,
 ),
   child: Row(
     children: [
@@ -29,9 +29,7 @@ color: Colors.grey[200],
           '${model['title']}',
 
           style:
-          TextStyle(fontWeight: FontWeight.normal,
-              color: Colors.black,
-              fontSize: 20),
+         Theme.of(context).textTheme.title
         ),
       )),
         SizedBox(width: 160,),
@@ -40,7 +38,7 @@ color: Colors.grey[200],
         child: IconButton(onPressed: (){
           print(model['id']);
           TodoBloc.get(context).upDateTodoDatabase(status: 'new', id: model['id']);
-        }, icon: Icon(Icons.clear,color: getColorFrom(model['color']),)),
+        }, icon: Icon(Icons.clear,color: Colors.red)),
       ),
 
 

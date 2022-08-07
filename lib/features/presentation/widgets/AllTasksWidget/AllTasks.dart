@@ -9,21 +9,21 @@ import 'package:untitled/features/presentation/widgets/buildTaskItemWidget/build
 
 
 
-class AllTasks extends StatefulWidget {
+class AllTasksWidget extends StatefulWidget {
   final bool shouldCheck;
   final bool shouldCheckDefault;
 
-  const AllTasks({
+  const AllTasksWidget({
     Key? key,
     this.shouldCheck = false,
     this.shouldCheckDefault = false,
   }) : super(key: key);
 
   @override
-  _AllTasksState createState() => _AllTasksState();
+  _AllTasksWidgetState createState() => _AllTasksWidgetState();
 }
 
-class _AllTasksState extends State<AllTasks> {
+class _AllTasksWidgetState extends State<AllTasksWidget> {
   DateTime _selectedDate = DateTime.now();
   var notifyHelper;
   @override

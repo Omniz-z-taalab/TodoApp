@@ -20,7 +20,7 @@ Widget ItmebuildTaskSchedule(Map model,context) => Dismissible(
   },
   direction: DismissDirection.endToStart,
   background: Padding(
-    padding: const EdgeInsets.only(top:43.0,left: 10,right: 10),
+    padding: const EdgeInsets.only(top:25.0,left: 10,right: 10),
     child: Container(
       width: double.infinity,
       height: 50,
@@ -56,10 +56,7 @@ Widget ItmebuildTaskSchedule(Map model,context) => Dismissible(
                 padding: const EdgeInsets.only(top: 15.0,left: 15),
                 child: Text(
                   '${model['title']}',
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16
-                  ),
+                    style: Theme.of(context).textTheme.subhead
                 ),
               ),
               SizedBox(
@@ -69,13 +66,10 @@ Widget ItmebuildTaskSchedule(Map model,context) => Dismissible(
                 padding: const EdgeInsets.only(left: 15.0),
                 child: Text(
                   '${model['startTime']}',
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16
+                  style: Theme.of(context).textTheme.subhead
 
                   ),
                 ),
-              ),
             ],
           ),
         ),

@@ -7,6 +7,7 @@ import 'package:path/path.dart' as p;
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:untitled/core/util/Cubit/TodoStates.dart';
+import 'package:untitled/core/util/NetWork/local/cache_helper.dart';
 import 'package:untitled/core/util/const/notificationServices.dart';
 
 class TodoBloc extends Cubit<TodoStates> {
@@ -182,4 +183,19 @@ var isChecked = false ;
       emit(DeleteDatabaseState());
     });
   }
+
+  bool isDark = false;
+  void changeMode({bool? fromShared}){
+    if(fromShared != null)
+      isDark = fromShared;
+    else
+    isDark = !isDark;
+    CacheHelper.putData(key: 'isDark', value: isDark).then((value) {
+      emit(IsDarkModeState());
+
+    });
+
+  }
+
 }
+

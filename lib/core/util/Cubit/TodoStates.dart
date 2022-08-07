@@ -13,3 +13,4 @@ class AppUpdateDatabaseState extends TodoStates{}
 class AppUpdateFavoriteDatabaseState extends TodoStates{}
 class DeleteDatabaseState extends TodoStates{}
 class CheckBoxState extends TodoStates{}
+class IsDarkModeState extends TodoStates{}

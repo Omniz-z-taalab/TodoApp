@@ -7,14 +7,14 @@ import 'package:untitled/features/presentation/widgets/bottons/AddTassBotton.dar
 import 'package:untitled/features/presentation/widgets/buildTaskItemWidget/ItembuilderCompleted.dart';
 import 'package:untitled/features/presentation/widgets/buildTaskItemWidget/buildTaskItemWidget.dart';
 
-class CompletedTasks extends StatefulWidget {
-  const CompletedTasks({Key? key}) : super(key: key);
+class CompletedWidget extends StatefulWidget {
+  const CompletedWidget({Key? key}) : super(key: key);
 
   @override
-  State<CompletedTasks> createState() => _CompletedTasksState();
+  State<CompletedWidget> createState() => _CompletedWidgetState();
 }
 
-class _CompletedTasksState extends State<CompletedTasks> {
+class _CompletedWidgetState extends State<CompletedWidget> {
   @override
   Widget build(BuildContext context) {
     return  BlocConsumer<TodoBloc, TodoStates>(
